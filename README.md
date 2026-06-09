@@ -21,7 +21,19 @@
 
 - 新一日成品表，例如 `6月5日度-规模数据.xlsx`
 
-## 安装
+## 一键安装
+
+通用安装方式，适用于 Codex / Claude Code：
+
+```bash
+npx -y skills add yushu0f319/taobao-excel-summary -g --all
+```
+
+安装后重启 Codex / Claude Code。
+
+注意：当前仓库是 private。只有已经有 GitHub 访问权限的电脑能直接安装。要做到客户电脑无门槛一键安装，需要把仓库改成 public，或给客户配置 GitHub 访问权限。
+
+## 手动安装
 
 把这个目录复制到 Codex skills 目录：
 
