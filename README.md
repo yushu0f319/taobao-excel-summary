@@ -23,45 +23,53 @@
 
 ## 一键安装
 
-通用安装方式，适用于 Codex / Claude Code：
+Codex 一键安装：
 
 ```bash
-npx -y skills add yushu0f319/taobao-excel-summary -g --all
+npx -y skills add yushu0f319/taobao-excel-summary --skill taobao-daily-excel-update --agent codex -g -y
 ```
 
-安装后重启 Codex / Claude Code。
-
-注意：当前仓库是 private。只有已经有 GitHub 访问权限的电脑能直接安装。要做到客户电脑无门槛一键安装，需要把仓库改成 public，或给客户配置 GitHub 访问权限。
-
-## 手动安装
-
-把这个目录复制到 Codex skills 目录：
-
-```bash
-skills/taobao-daily-excel-update
-```
-
-也就是最终结构类似：
-
-```text
-~/.codex/skills/taobao-daily-excel-update/
-├── SKILL.md
-└── scripts/
-    └── update_taobao_daily.py
-```
+安装后重启 Codex。
 
 ## 使用
 
-在 Codex 里选择或触发 `taobao-daily-excel-update`，然后告诉它：
+打开 Codex，直接说：
 
 ```text
-请用淘宝日度 Excel 更新流程：
-底稿是 /path/to/6月4日度-规模数据.xlsx
-原始表在 /path/to/taobao-raw/
-输出到 /path/to/6月5日度-规模数据.xlsx
+使用 taobao-daily-excel-update。
+
+底稿是：上一日成品表.xlsx
+原始表在：淘宝原始表文件夹
+输出到：outputs/新一日成品表.xlsx
 ```
 
-Skill 会自动：
+它会自动识别并处理：
+
+```text
+TB门店
+TB流量
+TB履约
+```
+
+## 卸载
+
+Codex 一键卸载：
+
+```bash
+npx -y skills remove taobao-daily-excel-update --agent codex -g -y
+```
+
+如果上面命令不可用，直接删除本地 skill 文件夹：
+
+```bash
+rm -rf ~/.codex/skills/taobao-daily-excel-update
+```
+
+然后重启 Codex。
+
+## 做什么
+
+Skill 会：
 
 1. 判断三张原始表分别是 `TB门店`、`TB流量`、`TB履约`
 2. 追加到成品表对应 sheet
